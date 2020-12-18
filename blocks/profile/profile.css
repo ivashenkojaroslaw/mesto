@@ -1,3 +1,8 @@
 .profile{
-    
+    border: 1px solid red;
+    max-width: 880px;
+    padding: 0;
+    margin: 0 auto 0 auto;
+    display: flex;
+    flex-direction: row;
 }

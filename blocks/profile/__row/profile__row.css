@@ -1,0 +1,11 @@
+.profile__row{
+    border: 1px solid green;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+}
+.profile__row:nth-child(1){
+    margin-bottom: 16px;
+    margin-top: 22px;
+}
