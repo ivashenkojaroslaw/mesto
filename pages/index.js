@@ -5,25 +5,38 @@ let likeBtn = document.querySelectorAll('.places__like-button');
 
 function changeInfo(evt){
     evt.preventDefault();
-    document.querySelector('.profile__name').innerHTML = document.querySelector('.popup__name').value;
-    document.querySelector('.profile__describe').innerHTML = document.querySelector('.popup__describe').value;
-    document.querySelector('.popup').style.display = 'none';
+    let profile__name = document.querySelector('.profile__name')
+    let popup__name = document.querySelector('.popup__name');
+    let profile__describe = document.querySelector('.profile__describe');
+    let popup__describe = document.querySelector('.popup__describe');
+    let popup = document.querySelector('.popup');
+
+    profile__name.innerHTML = popup__name.value;    
+    profile__describe.innerHTML = popup__describe.value;
+    popup.style.display = 'none';
 }
 
 editBtn.addEventListener('click',function(){
-    document.querySelector('.popup').style.display = 'flex';
-    document.querySelector('.popup__name').value = document.querySelector('.profile__name').innerHTML;
-    document.querySelector('.popup__describe').value = document.querySelector('.profile__describe').innerHTML;
+    let popup = document.querySelector('.popup');
+    let profile__name = document.querySelector('.profile__name')
+    let popup__name = document.querySelector('.popup__name');
+    let profile__describe = document.querySelector('.profile__describe');
+    let popup__describe = document.querySelector('.popup__describe');
+    popup.style.display = 'flex';
+    popup__name.value = profile__name.innerHTML;
+    popup__describe.value = profile__describe.innerHTML;
 });
 
 closeBtn.addEventListener('click',function(){
-    document.querySelector('.popup').style.display = 'none';
+    let popup = document.querySelector('.popup');
+    popup.style.display = 'none';
 });
 
 for (let i=0; i<likeBtn.length; i++){
     likeBtn[i].addEventListener('click',function(){
-        this.children[0].classList.toggle('icon_like-disable');
-        this.children[0].classList.toggle('icon_like-activate');    
+        let child = this.children[0];
+        child.classList.toggle('icon_like-disable');
+        child.classList.toggle('icon_like-activate');    
      })
 }
 
