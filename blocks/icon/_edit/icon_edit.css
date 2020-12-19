@@ -4,3 +4,10 @@
     height: 10px;
     display: block;
 }
+
+@media screen and (max-width: 490px) {
+    .icon_edit {
+        width: 7.5px;
+        height: 7.5px;
+    }
+} 

@@ -6,3 +6,19 @@
     margin: 40px auto 45px auto;
     border-bottom: 1px solid #545454;
 }
+
+@media screen and (max-width: 1024px) {
+    .header{  
+        margin: 40px 3.75% 45px 3.75%;
+        max-width: 92.5%;
+    }
+}
+
+@media screen and (max-width: 490px) {
+    .header {
+        margin: 28px 0 42px 0;
+        max-width: 100%;
+        min-height: 56px;
+        padding-left: 27px;
+    }
+} 

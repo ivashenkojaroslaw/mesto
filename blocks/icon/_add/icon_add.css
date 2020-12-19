@@ -4,3 +4,10 @@
     height: 22px;
     display: block;
 }
+
+@media screen and (max-width: 490px) {
+    .icon_add {
+        width: 16px;
+        height: 16px;
+    }
+} 

@@ -6,3 +6,17 @@
     display: flex;
     flex-direction: row;
 }
+
+@media screen and (max-width: 1024px) {
+    .profile{  
+        margin: 0 3.75%;
+        max-width: 92.5%;
+    }
+} 
+
+@media screen and (max-width: 490px) {
+    .profile {
+        flex-direction: column;
+        align-items: center;
+    }
+} 

@@ -1,5 +1,18 @@
 .footer{
     border: 1px solid green;
-    margin: 98px auto 60px auto;
+    margin: 67px auto 60px auto;
     max-width: 880px;
 }
+
+@media screen and (max-width: 1024px) {
+    .footer{  
+        margin: 67px 3.75% 60px 3.75%;
+        max-width: 92.5%;
+    }
+}
+
+@media screen and (max-width: 490px) {
+    .footer {
+        margin: 48px 3.75% 36px 3.75%;
+    }
+} 
