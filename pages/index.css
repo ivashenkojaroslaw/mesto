@@ -21,8 +21,14 @@
 @import url(../blocks/icon/icon.css);
 @import url(../blocks/icon/_edit/icon_edit.css);
 @import url(../blocks/icon/_add/icon_add.css);
+@import url(../blocks/icon/_like/icon_like.css);
 
-@import url(../blocks/photos/photos.css);
+@import url(../blocks/palces/palces.css);
+@import url(../blocks/places/__card/places__card.css);
+@import url(../blocks/places/__photo/places__photo.css);
+@import url(../blocks/places/__info-pannel/places__info-pannel.css);
+@import url(../blocks/places/__name/places__name.css);
+@import url(../blocks/places/__like-button/places__like-button.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
