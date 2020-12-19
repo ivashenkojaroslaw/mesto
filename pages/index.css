@@ -21,7 +21,9 @@
 @import url(../blocks/icon/icon.css);
 @import url(../blocks/icon/_edit/icon_edit.css);
 @import url(../blocks/icon/_add/icon_add.css);
-@import url(../blocks/icon/_like/icon_like.css);
+@import url(../blocks/icon/_like-disable/icon_like-disable.css);
+@import url(../blocks/icon/_like-activate/icon_like-activate.css);
+@import url(../blocks/icon/_close/icon_close.css);
 
 
 @import url(../blocks/places/places.css);
@@ -34,3 +36,12 @@
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
+
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__window/popup__window.css);
+@import url(../blocks/popup/__header/popup__header.css);
+@import url(../blocks/popup/__form/popup__form.css);
+@import url(../blocks/popup/__save-btn/popup__save-btn.css);
+@import url(../blocks/popup/__name/popup__name.css);
+@import url(../blocks/popup/__describe/popup__describe.css);
+@import url(../blocks/popup/__close-btn/popup__close-btn.css);

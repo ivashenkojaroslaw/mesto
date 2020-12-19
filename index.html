@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="pages/index.css">
+    <link rel="stylesheet" href="pages/index.css">    
     <title>Место</title>
 </head>
 <body class="root">
@@ -12,7 +12,7 @@
             <img src="images/logo.svg" alt="Место-логотип" class="header__logo">
         </header>
         <main>
-            <div class="profile">
+            <section class="profile">
                 <img src="images/photoProfile.jpg" alt="Фото профиля" class="profile__photo">
                 <div class="profile__info">
                     <div class="profile__row">
@@ -24,56 +24,67 @@
                     </div>    
                 </div>
                 <button type="submit" class="profile__add-button"><i class="icon icon_add"></i></button>                
-            </div>
-            <div class="places">
+            </section>
+            <section class="places">
                 <div class="places__card">
                     <img src="images/karachaevsk.jpg" alt="Карачаевск" class="places__photo">
                     <div class="places__info-pannel">
                         <p class="places__name">Карачаевск</p>
-                        <button type="submit" class="places__like-button"><i class="icon icon_like"></i></button>
+                        <button type="submit" class="places__like-button"><i class="icon icon_like-disable"></i></button>
                     </div>
                 </div>
                 <div class="places__card">
                     <img src="images/Elbrus.png" alt="Эльбрус" class="places__photo">
                     <div class="places__info-pannel">
                         <p class="places__name">Гора Эльбрус</p>
-                        <button type="submit" class="places__like-button"><i class="icon icon_like"></i></button>
+                        <button type="submit" class="places__like-button"><i class="icon icon_like-disable"></i></button>
                     </div>
                 </div>
                 <div class="places__card">
                     <img src="images/dombay.png" alt="Домбай" class="places__photo">
                     <div class="places__info-pannel">
                         <p class="places__name">Домбай</p>
-                        <button type="submit" class="places__like-button"><i class="icon icon_like"></i></button>
+                        <button type="submit" class="places__like-button"><i class="icon icon_like-disable"></i></button>
                     </div>
                 </div>
                 <div class="places__card">
                     <img src="images/Elbrus.png" alt="Эльбрус" class="places__photo">
                     <div class="places__info-pannel">
                         <p class="places__name">Гора Эльбрус</p>
-                        <button type="submit" class="places__like-button"><i class="icon icon_like"></i></button>
+                        <button type="submit" class="places__like-button"><i class="icon icon_like-disable"></i></button>
                     </div>
                 </div>
                 <div class="places__card">
                     <img src="images/dombay.png" alt="Домбай" class="places__photo">
                     <div class="places__info-pannel">
                         <p class="places__name">Домбай</p>
-                        <button type="submit" class="places__like-button"><i class="icon icon_like"></i></button>
+                        <button type="submit" class="places__like-button"><i class="icon icon_like-disable"></i></button>
                     </div>
                 </div>
                 <div class="places__card">
                     <img src="images/karachaevsk.jpg" alt="Карачаевск" class="places__photo">
                     <div class="places__info-pannel">
                         <p class="places__name">Карачаево-Черкесия</p>
-                        <button type="submit" class="places__like-button"><i class="icon icon_like"></i></button>
+                        <button type="submit" class="places__like-button"><i class="icon icon_like-disable"></i></button>
                     </div>
                 </div>
-            </div>
+            </section>
         </main>
         <footer class="footer">
             <p class="footer__copyright">© 2020 Mesto Russia</p>
         </footer>
     </div>
-    
+    <section class="popup">
+        <div class="popup__window">
+            <button class="popup__close-btn"><i class="icon icon_close"></i></button>
+            <h2 class="popup__header">Редактировать профиль</h2>
+            <form action="submit" class="popup__form">
+                <input type="text" class="popup__name">
+                <input type="text" class="popup__describe">
+                <button type="submit" class="popup__save-btn">Сохранить</button>
+            </form>
+        </div>
+    </section>
+    <script src="pages/index.js"></script>
 </body>
 </html>
