@@ -1,4 +1,4 @@
-.icon_add{
+.icon_type_add{
     background-image: url(../../../images/add.svg);
     width: 22px;
     height: 22px;
@@ -6,7 +6,7 @@
 }
 
 @media screen and (max-width: 490px) {
-    .icon_add {
+    .icon_type_add {
         width: 16px;
         height: 16px;
     }

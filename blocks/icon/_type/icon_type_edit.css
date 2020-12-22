@@ -1,4 +1,4 @@
-.icon_edit{
+.icon_type_edit{
     background-image: url(../../../images/edit.svg);
     width: 10px;
     height: 10px;
@@ -6,7 +6,7 @@
 }
 
 @media screen and (max-width: 490px) {
-    .icon_edit {
+    .icon_type_edit {
         width: 7.5px;
         height: 7.5px;
     }

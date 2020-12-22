@@ -1,4 +1,4 @@
-.icon_close{
+.icon_type_close{
     background-image: url(../../../images/close.svg);
     width: 40px;
     height: 40px;
@@ -6,7 +6,7 @@
 }
 
 @media screen and (max-width: 550px) {
-    .icon_close {
+    .icon_type_close {
         width: 26px;
         height: 26px;   
     }

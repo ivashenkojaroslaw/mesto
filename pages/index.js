@@ -1,37 +1,41 @@
-let editBtn = document.querySelector('.profile__edit-button');
+let editBtn = document.querySelector('.profile__button_type_edit');
 let closeBtn = document.querySelector('.popup__close-btn');
-let saveBtn = document.querySelector('.popup__save-btn');
+let saveBtn = document.querySelector('.popup__button_type_save');
 let likeBtn = document.querySelectorAll('.places__like-button');
+
+let profile__name = document.querySelector('.profile__name');
+let profile__describe = document.querySelector('.profile__describe');
+
+let popup = document.querySelector('.popup_hidden');
+let popup__name = document.querySelector('.popup__input_form_name');
+let popup__describe = document.querySelector('.popup__input_form_describe');
+
+
+function popupInit(){
+    popup.classList.toggle('popup_hidden');
+    popup.classList.toggle('popup');
+}
 
 function changeInfo(evt){
     evt.preventDefault();
-    let profile__name = document.querySelector('.profile__name')
-    let popup__name = document.querySelector('.popup__name');
-    let profile__describe = document.querySelector('.profile__describe');
-    let popup__describe = document.querySelector('.popup__describe');
-    let popup = document.querySelector('.popup');
-
-    profile__name.innerHTML = popup__name.value;    
-    profile__describe.innerHTML = popup__describe.value;
-    popup.style.display = 'none';
+    profile__name.textContent = popup__name.value;    
+    profile__describe.textContent = popup__describe.value;
+    popupInit();
 }
 
-editBtn.addEventListener('click',function(){
-    let popup = document.querySelector('.popup');
-    let profile__name = document.querySelector('.profile__name')
-    let popup__name = document.querySelector('.popup__name');
-    let profile__describe = document.querySelector('.profile__describe');
-    let popup__describe = document.querySelector('.popup__describe');
-    popup.style.display = 'flex';
-    popup__name.value = profile__name.innerHTML;
-    popup__describe.value = profile__describe.innerHTML;
-});
+function showInfo(){
+    popup__name.value = profile__name.textContent;
+    popup__describe.value = profile__describe.textContent;
+}
 
-closeBtn.addEventListener('click',function(){
-    let popup = document.querySelector('.popup');
-    popup.style.display = 'none';
+editBtn.addEventListener('click',function(){      
+    popupInit();
+    showInfo();
 });
+closeBtn.addEventListener('click',popupInit);
+saveBtn.addEventListener('click',changeInfo);
 
+/*
 for (let i=0; i<likeBtn.length; i++){
     likeBtn[i].addEventListener('click',function(){
         let child = this.children[0];
@@ -39,6 +43,6 @@ for (let i=0; i<likeBtn.length; i++){
         child.classList.toggle('icon_like-activate');    
      })
 }
+*/
 
-saveBtn.addEventListener('click',changeInfo);
 

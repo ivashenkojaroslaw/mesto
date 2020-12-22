@@ -16,56 +16,56 @@
                 <img src="images/photoProfile.jpg" alt="Фото профиля" class="profile__photo">
                 <div class="profile__info">
                     <div class="profile__row">
-                        <p class="profile__name">Жак-Ив Кусто</p>
-                        <button type="submit" class="profile__edit-button"><i class="icon icon_edit"></i></button>
+                        <h1 class="profile__name">Жак-Ив Кусто</h1>                        
+                        <button type="button" class="profile__button_type_edit"><i class="icon icon_type_edit"></i></button>
                     </div>
                     <div class="profile__row">
                         <p class="profile__describe">Исследователь океана</p>
                     </div>    
                 </div>
-                <button type="submit" class="profile__add-button"><i class="icon icon_add"></i></button>                
+                <button type="button" class="profile__button_type_add"><i class="icon icon_type_add"></i></button>                
             </section>
             <section class="places">
                 <div class="places__card">
                     <img src="images/karachaevsk.jpg" alt="Карачаевск" class="places__photo">
                     <div class="places__info-pannel">
-                        <p class="places__name">Карачаевск</p>
-                        <button type="submit" class="places__like-button"><div class="icon icon_like-disable"></div></button>
+                        <h2 class="places__name">Карачаевск</h2>
+                        <div class="places__like"></div>
                     </div>
                 </div>
                 <div class="places__card">
                     <img src="images/Elbrus.png" alt="Эльбрус" class="places__photo">
                     <div class="places__info-pannel">
-                        <p class="places__name">Гора Эльбрус</p>
-                        <button type="submit" class="places__like-button"><div class="icon icon_like-disable"></div></button>
+                        <h2 class="places__name">Гора Эльбрус</h2>
+                        <div class="places__like"></div>
                     </div>
                 </div>
                 <div class="places__card">
                     <img src="images/dombay.png" alt="Домбай" class="places__photo">
                     <div class="places__info-pannel">
-                        <p class="places__name">Домбай</p>
-                        <button type="submit" class="places__like-button"><div class="icon icon_like-disable"></div></button>
+                        <h2 class="places__name">Домбай</h2>
+                        <div class="places__like"></div>
                     </div>
                 </div>
                 <div class="places__card">
                     <img src="images/Elbrus.png" alt="Эльбрус" class="places__photo">
                     <div class="places__info-pannel">
-                        <p class="places__name">Гора Эльбрус</p>
-                        <button type="submit" class="places__like-button"><div class="icon icon_like-disable"></div></button>
+                        <h2 class="places__name">Гора Эльбрус</h2>
+                        <div class="places__like"></div>
                     </div>
                 </div>
                 <div class="places__card">
                     <img src="images/dombay.png" alt="Домбай" class="places__photo">
                     <div class="places__info-pannel">
-                        <p class="places__name">Домбай</p>
-                        <button type="submit" class="places__like-button"><div class="icon icon_like-disable"></div></button>
+                        <h2 class="places__name">Домбай</h2>
+                        <div class="places__like"></div>
                     </div>
                 </div>
                 <div class="places__card">
                     <img src="images/karachaevsk.jpg" alt="Карачаевск" class="places__photo">
                     <div class="places__info-pannel">
-                        <p class="places__name">Карачаево-Черкесия</p>
-                        <button type="submit" class="places__like-button"><div class="icon icon_like-disable"></div></button>
+                        <h2 class="places__name">Карачаево-Черкесия</h2>
+                        <div class="places__like"></div>
                     </div>
                 </div>
             </section>
@@ -74,14 +74,14 @@
             <p class="footer__copyright">© 2020 Mesto Russia</p>
         </footer>
     </div>
-    <section class="popup">
+    <section class="popup_hidden">
         <div class="popup__window">            
-            <button class="popup__close-btn"><div class="icon icon_close"></div></button>                      
+            <button class="popup__close-btn"><i class="icon icon_type_close"></i></button>                      
             <h2 class="popup__header">Редактировать профиль</h2>
-            <form action="submit" class="popup__form">
-                <input type="text" class="popup__name">
-                <input type="text" class="popup__describe">
-                <button type="submit" class="popup__save-btn">Сохранить</button>
+            <form action="submit" class="popup__form" name="mesto-form">
+                <input type="text" class="popup__input popup__input_form_name" name='name'>
+                <input type="text" class="popup__input popup__input_form_describe" name="describe">
+                <button type="submit" class="popup__button_type_save">Сохранить</button>
             </form>
         </div>
     </section>
