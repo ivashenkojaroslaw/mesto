@@ -1,5 +1,5 @@
-.popup_hidden{
-    display: none;
+.popup_show{
+    display: flex;
     min-width: 100%;
     min-height: 100%;
     margin: 0;

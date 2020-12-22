@@ -6,13 +6,13 @@ let likeBtn = document.querySelectorAll('.places__like-button');
 let profile__name = document.querySelector('.profile__name');
 let profile__describe = document.querySelector('.profile__describe');
 
-let popup = document.querySelector('.popup_hidden');
+let popup = document.querySelector('.popup');
 let popup__name = document.querySelector('.popup__input_form_name');
 let popup__describe = document.querySelector('.popup__input_form_describe');
 
 
 function popupInit(){
-    popup.classList.toggle('popup_hidden');
+    popup.classList.toggle('popup_show');
     popup.classList.toggle('popup');
 }
 

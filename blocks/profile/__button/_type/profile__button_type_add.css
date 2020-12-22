@@ -1,12 +1,8 @@
 .profile__button_type_add{
     min-width: 150px;
     min-height: 50px;
-    background-color: #000000;
     border: 2px solid #FFFFFF;
-    box-sizing: border-box;
     border-radius: 2px;
-    cursor: pointer;
-    padding: 0;
     margin: auto 0 auto auto;
 }
 
