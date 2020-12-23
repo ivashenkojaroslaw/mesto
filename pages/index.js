@@ -13,11 +13,9 @@ let popup__describe = document.querySelector('.popup__input_form_describe');
 
 function hidePopup(){
     popup.classList.remove('popup_show');
-    popup.classList.add('popup');
 }
 function showPopup(){
-    popup.classList.add('popup_show');
-    popup.classList.remove('popup');
+    popup.classList.add('popup_show');    
     popup__name.value = profile__name.textContent;
     popup__describe.value = profile__describe.textContent;
 }
@@ -29,10 +27,7 @@ function changeInfo(evt){
     hidePopup();
 }
 
-editBtn.addEventListener('click',function(){      
-    showPopup();
-});
-
+editBtn.addEventListener('click',showPopup);
 closeBtn.addEventListener('click',hidePopup);
 saveBtn.addEventListener('click',changeInfo);
 
