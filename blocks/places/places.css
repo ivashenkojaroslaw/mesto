@@ -4,8 +4,9 @@
     margin: 51px auto 0 auto;
     display: grid;
     grid-template-columns: repeat(3,minmax(22%, 1fr));
-    column-gap: 1.32%;
-    row-gap: 1.56%;
+    grid-auto-rows: 370px;
+    grid-column-gap: 1.32%;
+    /*grid-row-gap: 1.56%;*/
 }
 
 @media screen and (max-width: 1024px) {

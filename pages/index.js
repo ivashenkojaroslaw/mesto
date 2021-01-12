@@ -2,6 +2,35 @@ let editBtn = document.querySelector('.profile__button_type_edit');
 let closeBtn = document.querySelector('.popup__close-btn');
 let saveBtn = document.querySelector('.popup__button');
 let likeBtn = document.querySelectorAll('.places__like-button');
+let placesSection = document.querySelector('.places');
+
+const initialCards = [
+    {
+      name: 'Карачаевск',
+      link: 'images/karachaevsk.jpg'
+    },
+    {
+      name: 'Челябинская область',
+      link: 'images/chelyabinsk.jpg'
+    },
+    {
+      name: 'Эльбрус',
+      link: 'images/Elbrus.png'
+    },
+    {
+      name: 'Домбай',
+      link: 'images/dombay.png'
+    },
+    {
+      name: 'Курганская область',
+      link: 'images/kurgan.jpg'
+    },
+    {
+      name: 'Волгоград',
+      link: 'images/volgrad.jpg'
+    }
+  ]; 
+
 
 let profile__name = document.querySelector('.profile__name');
 let profile__describe = document.querySelector('.profile__describe');
@@ -27,10 +56,27 @@ function changeInfo(evt){
     hidePopup();
 }
 
+function createPlacesCard(path,name){
+    const template = document.querySelector('#places__card').content;
+    const newCard = template.querySelector('.places__card').cloneNode(true);
+    newCard.querySelector('.places__photo').src = path;
+    newCard.querySelector('.places__photo').alt = name;
+    newCard.querySelector('.places__name').textContent = name;
+
+    return newCard
+}
+
+function initPlaces(){
+    initialCards.forEach(item => {
+        let card = createPlacesCard(item.link,item.name);
+        placesSection.append(card);
+    });
+}
+
 editBtn.addEventListener('click',showPopup);
 closeBtn.addEventListener('click',hidePopup);
 saveBtn.addEventListener('click',changeInfo);
-
+initPlaces();
 /*
 for (let i=0; i<likeBtn.length; i++){
     likeBtn[i].addEventListener('click',function(){

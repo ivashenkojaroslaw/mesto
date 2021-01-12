@@ -26,7 +26,7 @@
                 <button type="button" class="profile__button profile__button_type_add"><div class="icon icon_type_add"></div></button>                
             </section>
             <section class="places">
-                <div class="places__card">
+                <!--div class="places__card">
                     <img src="images/karachaevsk.jpg" alt="Карачаевск" class="places__photo">
                     <div class="places__info-pannel">
                         <h2 class="places__name">Карачаевск</h2>
@@ -67,7 +67,7 @@
                         <h2 class="places__name">Карачаево-Черкесия</h2>
                         <button type='button' class="places__like"></button>
                     </div>
-                </div>
+                </div-->
             </section>
         </main>
         <footer class="footer">
@@ -85,6 +85,15 @@
             </form>
         </div>
     </section>
+    <template id="places__card">
+        <div class="places__card">
+            <img class="places__photo">
+            <div class="places__info-pannel">
+                <h2 class="places__name"></h2>
+                <button type='button' class="places__like"></button>
+            </div>
+        </div>
+    </template>
     <script src="pages/index.js"></script>
 </body>
 </html>
