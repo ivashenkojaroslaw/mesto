@@ -52,16 +52,13 @@ function showPopupEdit(){
     popup__describe.value = profile__describe.textContent;
 }
 
-function hidePopup(){
-    let openedPopup = document.querySelector('.popup_show');
-    openedPopup.classList.remove('popup_show');
-}
-
 function showPopupAdd(){
     popupAdd.classList.add('popup_show');
 }
-function hidePopupAdd(){
-    popupAdd.classList.remove('popup_show');
+
+function hidePopup(){
+    let openedPopup = document.querySelector('.popup_show');
+    openedPopup.classList.remove('popup_show');
 }
 
 function changeInfo(evt){
