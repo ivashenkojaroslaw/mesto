@@ -74,14 +74,25 @@
             <p class="footer__copyright">© 2020 Mesto Russia</p>
         </footer>
     </div>
-    <section class="popup">
+    <section class="popup popup_edit">
         <div class="popup__window">            
             <button class="popup__close-btn"><div class="icon icon_type_close"></div></button>                      
             <h2 class="popup__header">Редактировать профиль</h2>
-            <form action="submit" class="popup__form" name="mesto-form">
+            <form action="submit" class="popup__form" name="mesto-form-profile">
                 <input type="text" class="popup__input popup__input_form_name" name='name'>
                 <input type="text" class="popup__input popup__input_form_describe" name="describe">
-                <button type="submit" class="popup__button">Сохранить</button>
+                <button type="submit" class="popup__button popup__button_save-profileChanges">Сохранить</button>
+            </form>
+        </div>
+    </section>
+    <section class="popup popup_add">
+        <div class="popup__window">            
+            <button class="popup__close-btn"><div class="icon icon_type_close"></div></button>                      
+            <h2 class="popup__header">Новое место</h2>
+            <form action="submit" class="popup__form" name="mesto-form-card">
+                <input type="text" class="popup__input popup__input_form_card-name" name='name' placeholder="Название">
+                <input type="text" class="popup__input popup__input_form_card-link" name="link" placeholder="Ссылка на картинку">
+                <button type="submit" class="popup__button popup__button_save-newCard">Сохранить</button>
             </form>
         </div>
     </section>
