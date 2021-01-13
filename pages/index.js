@@ -77,6 +77,7 @@ function createPlacesCard(path,name){
     newCard.querySelector('.places__photo').src = path;
     newCard.querySelector('.places__photo').alt = name;
     newCard.querySelector('.places__name').textContent = name;
+    newCard.querySelector('.places__like').addEventListener('click',likedCard)
 
     return newCard
 }
@@ -98,6 +99,11 @@ function createNewCard(evt){
     popup__card_link.value = '';
     hidePopup();
 }
+
+function likedCard(evt){
+    evt.target.classList.toggle('places__like_activate');
+}
+
 editBtn.addEventListener('click',showPopupEdit);
 addBtn.addEventListener('click',showPopupAdd);
 Array.from(closeBtnsPopup).forEach(btn => {
@@ -107,15 +113,5 @@ saveEditBtn.addEventListener('click',changeInfo);
 saveNewCardBtn.addEventListener('click',createNewCard);
 initPlaces();
 
-
-/*
-for (let i=0; i<likeBtn.length; i++){
-    likeBtn[i].addEventListener('click',function(){
-        let child = this.children[0];
-        child.classList.toggle('icon_like-disable');
-        child.classList.toggle('icon_like-activate');    
-     })
-}
-*/
 
 

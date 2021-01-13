@@ -31,6 +31,7 @@
 @import url(../blocks/places/__info-pannel/places__info-pannel.css);
 @import url(../blocks/places/__name/places__name.css);
 @import url(../blocks/places/__like/places__like.css);
+@import url(../blocks/places/__like/_activate/places__like_activate.css);
 
 
 @import url(../blocks/footer/footer.css);
