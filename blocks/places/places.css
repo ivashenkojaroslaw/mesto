@@ -6,7 +6,7 @@
     grid-template-columns: repeat(3,minmax(22%, 1fr));
     grid-auto-rows: 370px;
     grid-column-gap: 1.32%;
-    /*grid-row-gap: 1.56%;*/
+    grid-row-gap: 1.56vw;
 }
 
 @media screen and (max-width: 1024px) {
