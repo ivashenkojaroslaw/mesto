@@ -75,6 +75,7 @@ function createPlacesCard(path,name){
     newCard.querySelector('.places__photo').alt = name;
     newCard.querySelector('.places__name').textContent = name;
     newCard.querySelector('.places__like').addEventListener('click',likedCard)
+    newCard.querySelector('.places__trash').addEventListener('click',deleteCard)
 
     return newCard
 }
@@ -99,6 +100,10 @@ function createNewCard(evt){
 
 function likedCard(evt){
     evt.target.classList.toggle('places__like_activate');
+}
+
+function deleteCard(evt){
+    evt.target.parentNode.remove();
 }
 
 editBtn.addEventListener('click',showPopupEdit);
