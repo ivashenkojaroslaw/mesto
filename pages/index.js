@@ -8,20 +8,20 @@ let addBtn = document.querySelector('.profile__button_type_add');
 
 const initialCards = [
     {
-      name: 'Карачаевск',
-      link: 'images/karachaevsk.jpg'
+      name: 'Крым',
+      link: 'images/krim.jpg'
     },
     {
       name: 'Челябинская область',
       link: 'images/chelyabinsk.jpg'
     },
     {
-      name: 'Эльбрус',
-      link: 'images/Elbrus.png'
+      name: 'Новгород',
+      link: 'images/novgorod.jpg'
     },
     {
-      name: 'Домбай',
-      link: 'images/dombay.png'
+      name: 'Байкал',
+      link: 'images/baikal.jpg'
     },
     {
       name: 'Курганская область',
@@ -74,8 +74,9 @@ function createPlacesCard(path,name){
     newCard.querySelector('.places__photo').src = path;
     newCard.querySelector('.places__photo').alt = name;
     newCard.querySelector('.places__name').textContent = name;
-    newCard.querySelector('.places__like').addEventListener('click',likedCard)
-    newCard.querySelector('.places__trash').addEventListener('click',deleteCard)
+    newCard.querySelector('.places__like').addEventListener('click',likedCard);
+    newCard.querySelector('.places__trash').addEventListener('click',deleteCard);
+    newCard.querySelector('.places__photo').addEventListener('click',showPicture)
 
     return newCard
 }
@@ -104,6 +105,29 @@ function likedCard(evt){
 
 function deleteCard(evt){
     evt.target.parentNode.remove();
+}
+
+function showPicture(evt){
+  const link = evt.target.src;
+  const name = evt.target.parentNode.querySelector('.places__name').textContent;
+  showPopupPicture(link,name);
+}
+
+function showPopupPicture(path,name){
+    const template = document.querySelector('#popup-image').content;
+    const popupPicture = template.querySelector('.popup-image').cloneNode(true);
+    const page = document.querySelector('.page');
+    popupPicture.querySelector('.popup-image__picture').src = path;
+    popupPicture.querySelector('.popup-image__picture').alt = name;
+    popupPicture.querySelector('.popup-image__caption').textContent = name;
+    popupPicture.querySelector('.popup-image__close-btn').addEventListener('click',hidePopup_image);
+    console.log(popupPicture);
+    popupPicture.classList.add('popup-image_show');
+    page.append(popupPicture);
+}
+
+function hidePopup_image(){
+  document.querySelector('.popup-image_show').classList.remove('popup-image_show');
 }
 
 editBtn.addEventListener('click',showPopupEdit);
