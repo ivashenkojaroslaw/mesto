@@ -5,6 +5,7 @@ let saveNewCardBtn = document.querySelector('.popup__button_save-newCard');
 let likeBtn = document.querySelectorAll('.places__like-button');
 let placesSection = document.querySelector('.places');
 let addBtn = document.querySelector('.profile__button_type_add');
+const popupPicture = document.querySelector('.popup-image');
 
 const initialCards = [
     {
@@ -113,17 +114,11 @@ function showPicture(evt){
   showPopupPicture(link,name);
 }
 
-function showPopupPicture(path,name){
-    const template = document.querySelector('#popup-image').content;
-    const popupPicture = template.querySelector('.popup-image').cloneNode(true);
-    const page = document.querySelector('.page');
+function showPopupPicture(path,name){    
     popupPicture.querySelector('.popup-image__picture').src = path;
     popupPicture.querySelector('.popup-image__picture').alt = name;
-    popupPicture.querySelector('.popup-image__caption').textContent = name;
-    popupPicture.querySelector('.popup-image__close-btn').addEventListener('click',hidePopup_image);
-    console.log(popupPicture);
+    popupPicture.querySelector('.popup-image__caption').textContent = name;    
     popupPicture.classList.add('popup-image_show');
-    page.append(popupPicture);
 }
 
 function hidePopup_image(){
@@ -137,6 +132,7 @@ Array.from(closeBtnsPopup).forEach(btn => {
 });
 saveEditBtn.addEventListener('click',changeInfo);
 saveNewCardBtn.addEventListener('click',createNewCard);
+popupPicture.querySelector('.popup-image__close-btn').addEventListener('click',hidePopup_image);
 initPlaces();
 
 
