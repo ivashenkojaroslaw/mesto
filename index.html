@@ -36,7 +36,7 @@
         <div class="popup__window">            
             <button class="popup__close-btn"><div class="icon icon_type_close"></div></button>                      
             <h2 class="popup__header">Редактировать профиль</h2>
-            <form action="submit" class="popup__form" name="mesto-form-profile">
+            <form action="submit" class="popup__form popup__form_edit" name="mesto-form-profile">
                 <input type="text" class="popup__input popup__input_form_name" name='name'>
                 <input type="text" class="popup__input popup__input_form_describe" name="describe">
                 <button type="submit" class="popup__button popup__button_save-profileChanges">Сохранить</button>
@@ -47,7 +47,7 @@
         <div class="popup__window">            
             <button class="popup__close-btn"><div class="icon icon_type_close"></div></button>                      
             <h2 class="popup__header">Новое место</h2>
-            <form action="submit" class="popup__form" name="mesto-form-card">
+            <form action="submit" class="popup__form popup__form_add" name="mesto-form-card">
                 <input type="text" class="popup__input popup__input_form_card-name" name='name' placeholder="Название">
                 <input type="text" class="popup__input popup__input_form_card-link" name="link" placeholder="Ссылка на картинку">
                 <button type="submit" class="popup__button popup__button_save-newCard">Сохранить</button>
@@ -56,7 +56,7 @@
     </section>
     <template id="places__card">
         <div class="places__card">
-            <img class="places__photo" src="template.jpg" alt="template"> 
+            <img class="places__photo" src="images/template.jpg" alt="template"> 
             <div class="places__info-pannel">
                 <h2 class="places__name"></h2>
                 <button type='button' class="places__like"></button>
@@ -68,11 +68,12 @@
         <div class="popup-image__window">         
             <button class="popup-image__close-btn"><div class="icon icon_type_close"></div></button>                      
             <figure class="popup-image__picture-container">
-                <img src="template.jpg" alt="template" class="popup-image__picture">                    
+                <img src="images/template.jpg" alt="template" class="popup-image__picture">                    
                 <figcaption class="popup-image__caption"></figcaption>
             </figure>  
         </div>
     </section>
+    <script src="scripts/initial-сards.js"></script>
     <script src="pages/index.js"></script>
 </body>
 </html>
