@@ -85,7 +85,7 @@ function handleShowPopupPicture(data){
     imagePopupPicture.src = data.link;
     imagePopupPicture.alt = data.name;
     captionPopupPicture.textContent = data.name;
-    popupPicture.classList.add('popup-image_show');
+    openPopup(popupPicture);
 }
 
 
@@ -101,7 +101,7 @@ formAdd.addEventListener('submit', handleCreateNewCard);
 
 closeButtonPopupEdit.addEventListener('click',() => closePopup(popupEdit));
 closeButtonPopupAdd.addEventListener('click',() => closePopup(popupAdd));
-closeButtonPopupPicture.addEventListener('click',() => popupPicture.classList.remove('popup-image_show'));
+closeButtonPopupPicture.addEventListener('click',() => closePopup(popupPicture));
 
 initPlaces();
 
