@@ -26,7 +26,7 @@ const template = document.querySelector('#places__card').content;
 
 
 function openPopup(popup){
-    popup.classList.add('popup_show'); 
+    popup.classList.add('popup_show');
 }
 
 function closePopup(popup){
@@ -88,6 +88,17 @@ function handleShowPopupPicture(data){
     openPopup(popupPicture);
 }
 
+function handleClosePopupByOverlay(evt){
+    const currentOpenedPopup = document.querySelector('.popup_show');
+    if (currentOpenedPopup){
+        if (evt.target === currentOpenedPopup){
+            closePopup(currentOpenedPopup)
+        }
+        if(evt.key === 'Escape') { 
+            closePopup(currentOpenedPopup)
+        }
+    }
+}
 
 editButton.addEventListener('click',() => {    
     popupName.value = profileName.textContent;
@@ -99,9 +110,11 @@ addButton.addEventListener('click',() => openPopup(popupAdd));
 formEdit.addEventListener('submit', handleChangeInfo);
 formAdd.addEventListener('submit', handleCreateNewCard);
 
-closeButtonPopupEdit.addEventListener('click',() => closePopup(popupEdit));
-closeButtonPopupAdd.addEventListener('click',() => closePopup(popupAdd));
-closeButtonPopupPicture.addEventListener('click',() => closePopup(popupPicture));
+closeButtonPopupEdit.addEventListener('click', () => closePopup(popupEdit));
+closeButtonPopupAdd.addEventListener('click', () => closePopup(popupAdd));
+closeButtonPopupPicture.addEventListener('click', () => closePopup(popupPicture));
+document.addEventListener('click', handleClosePopupByOverlay)
+document.addEventListener('keydown', handleClosePopupByOverlay)
 
 initPlaces();
 
