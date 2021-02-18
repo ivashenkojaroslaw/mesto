@@ -36,10 +36,14 @@
         <div class="popup__window">            
             <button class="popup__close-btn"><div class="icon icon_type_close"></div></button>                      
             <h2 class="popup__header">Редактировать профиль</h2>
-            <form action="submit" class="popup__form popup__form_edit" name="mesto-form-profile">
-                <input type="text" class="popup__input popup__input_form_name" name='name'>
-                <input type="text" class="popup__input popup__input_form_describe" name="describe">
-                <button type="submit" class="popup__button popup__button_save-profileChanges">Сохранить</button>
+            <form action="submit" class="popup__form popup__form_edit" name="mesto-form-profile" novalidate>
+                <fieldset class="popup__set">
+                    <input id='edit-name' type="text" minlength="2" maxlength="40" class="popup__input popup__input_form_name" name='name' required>
+                    <span class="popup__error edit-name-error"></span>
+                    <input id='edit-describe' type="text" minlength="2" maxlength="200" class="popup__input popup__input_form_describe" name="describe" required>
+                    <span class="popup__error edit-describe-error"></span>
+                    <button type="submit" class="popup__button popup__button_save-profileChanges">Сохранить</button>
+                </fieldset>
             </form>
         </div>
     </section>
@@ -47,10 +51,14 @@
         <div class="popup__window">            
             <button class="popup__close-btn"><div class="icon icon_type_close"></div></button>                      
             <h2 class="popup__header">Новое место</h2>
-            <form action="submit" class="popup__form popup__form_add" name="mesto-form-card">
-                <input type="text" class="popup__input popup__input_form_card-name" name='name' placeholder="Название">
-                <input type="text" class="popup__input popup__input_form_card-link" name="link" placeholder="Ссылка на картинку">
-                <button type="submit" class="popup__button popup__button_save-newCard">Сохранить</button>
+            <form action="submit" class="popup__form popup__form_add" name="mesto-form-card" novalidate>
+                <fieldset class="popup__set">
+                    <input type="text" id='add-name' minlength="2" maxlength="30" class="popup__input popup__input_form_card-name" name='name' placeholder="Название" required>
+                    <span class="popup__error add-name-error"></span>
+                    <input type="url" id='add-link' class="popup__input popup__input_form_card-link" name="link" placeholder="Ссылка на картинку" required>
+                    <span class="popup__error add-link-error"></span>
+                    <button type="submit" class="popup__button popup__button_save-newCard">Сохранить</button>
+                </fieldset>
             </form>
         </div>
     </section>
@@ -73,7 +81,8 @@
             </figure>  
         </div>
     </section>
+    <script src="scripts/validate.js"></script>
     <script src="scripts/initial-сards.js"></script>
-    <script src="pages/index.js"></script>
+    <script src="pages/index.js"></script>    
 </body>
 </html>
