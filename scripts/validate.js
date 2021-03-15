@@ -16,10 +16,10 @@ const showInputError = (formElement, inputElement, errorMessage,settings) => {
 
 const hideInputError = (formElement, inputElement,settings) => {
 
-const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.remove(settings.inputErrorClass);
-    errorElement.classList.remove(settings.errorClass);
-    errorElement.textContent = '';
+    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+        inputElement.classList.remove(settings.inputErrorClass);
+        errorElement.classList.remove(settings.errorClass);
+        errorElement.textContent = '';
 };
 
 const checkInputValidity = (formElement, inputElement,settings) => {
@@ -46,11 +46,11 @@ const enableValidation = (settings) => {
     const formList = Array.from(document.querySelectorAll(settings.formSelector));
     formList.forEach((formElement) => {
         formElement.addEventListener('submit', function (evt) {
-        evt.preventDefault();
+            evt.preventDefault();
         });
         const fieldsetList = Array.from(formElement.querySelectorAll(settings.fieldSelector));
         fieldsetList.forEach(fieldset => {
-        setEventListeners(fieldset,settings);
+            setEventListeners(fieldset,settings);
         });      
     });
 };

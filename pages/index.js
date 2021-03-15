@@ -1,6 +1,14 @@
-import Card from '../scripts/Card.js'
+import Card from '../scripts/Card.js';
+import FormValidator from '../scripts/FormValidator.js';
 
-
+const settings = {  formSelector: '.popup__form',
+                    fieldSelector: '.popup__set',
+                    inputSelector: '.popup__input',
+                    submitButtonSelector: '.popup__button',
+                    inactiveButtonClass: 'popup__button_inactive',
+                    inputErrorClass: 'popup__input_type_error',
+                    errorClass: 'popup__error_active'
+                }
 
 const popupEdit = document.querySelector('.popup_edit');
 const popupName = popupEdit.querySelector('.popup__input_form_name');
@@ -16,8 +24,6 @@ const closeButtonPopupAdd= popupAdd.querySelector('.popup__close-btn');
 const formAdd = document.querySelector('.popup__form_add');
 
 const popupPicture = document.querySelector('.popup-image');
-const imagePopupPicture = popupPicture.querySelector('.popup-image__picture');
-const captionPopupPicture =  popupPicture.querySelector('.popup-image__caption');
 const closeButtonPopupPicture = popupPicture.querySelector('.popup-image__close-btn');
 
 const editButton= document.querySelector('.profile__button_type_edit');
@@ -26,41 +32,28 @@ const profileDescribe = document.querySelector('.profile__describe');
 
 const addButton = document.querySelector('.profile__button_type_add');
 const placesSection = document.querySelector('.places');
-const template = document.querySelector('#places__card').content;
 const popups = document.querySelectorAll('.popup');
 
 function openPopup(popup){
     popup.classList.add('popup_show');
-    //document.addEventListener('keydown', handleClosePopupByEscape)
-    //document.addEventListener('click', handleClosePopupByOverlay)
 }
 
 function closePopup(popup){
     popup.classList.remove('popup_show'); 
-    //document.removeEventListener('keydown', handleClosePopupByEscape)
-    //document.removeEventListener('click', handleClosePopupByOverlay)
 }
 
 function renderCard(data, wrap){
-    //wrap.prepend(createPlacesCard(data));
     const cardElement = new Card(data, '#places__card');
     wrap.prepend(cardElement.generateCard());
 }
-/*
-function createPlacesCard(data){  
-    const newCard = template.querySelector('.places__card').cloneNode(true);
-    const likeButton = newCard.querySelector('.places__like');
-    const deleteButton = newCard.querySelector('.places__trash');
-    const photo = newCard.querySelector('.places__photo');
-    photo.src = data.link;
-    photo.alt = data.name;
-    newCard.querySelector('.places__name').textContent = data.name;    
-    photo.addEventListener('click',() => handleShowPopupPicture(data));
-    likeButton.addEventListener('click',handleLikeCard);
-    deleteButton.addEventListener('click',handleDeleteCard);
 
-    return newCard
-}*/
+function initValidationForm(){
+    const formList = Array.from(document.querySelectorAll(settings.formSelector));
+    formList.forEach((formElement) => {       
+        const validationForm = new FormValidator(settings, formElement);
+        validationForm.enableValidation();
+    });
+}
 
 function initPlaces(){
     initialCards.forEach(item => {
@@ -68,14 +61,10 @@ function initPlaces(){
     });
 }
 
-function clearFormfromErrors(popupElement,settings){
-    const formElement = popupElement.querySelector('.popup__form');
-    const formButton = popupElement.querySelector('.popup__button');
-    const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
-    inputList.forEach(inputElement => {
-        hideInputError(formElement,inputElement,settings)
-    })
-    toggleButtonState(inputList,formButton,settings);
+function clearFormfromErrors(popupElement){
+    const formElement = popupElement.querySelector(settings.formSelector);
+    const validationForm = new FormValidator(settings, formElement);
+    validationForm.clearFormfromErrors();
 }
 
 function handleChangeInfo(evt){
@@ -91,29 +80,7 @@ function handleCreateNewCard(evt){
     formAdd.reset();
     closePopup(popupAdd);
 }
-/*
-function handleDeleteCard(evt){
-    evt.target.closest('.places__card').remove();
-}
 
-function handleLikeCard(evt){
-    evt.target.classList.toggle('places__like_activate');
-}*/
-
-/*
-function handleShowPopupPicture(data){   
-    imagePopupPicture.src = data.link;
-    imagePopupPicture.alt = data.name;
-    captionPopupPicture.textContent = data.name;
-    openPopup(popupPicture);
-}
-
-function handleClosePopupByOverlay(evt){    
-    if (evt.target.classList.contains('popup_show')){
-        closePopup(evt.target)
-    }
-}
-*/
 function handleClosePopupByEscape(evt){
     const currentOpenedPopup = document.querySelector('.popup_show');
     if (currentOpenedPopup){
@@ -130,12 +97,13 @@ editButton.addEventListener('click',() => {
     popupName.value = profileName.textContent;
     popupDescribe.value = profileDescribe.textContent;
     openPopup(popupEdit);
-    clearFormfromErrors(popupEdit,settings)
+    clearFormfromErrors(popupEdit)
+    
 });
 
 addButton.addEventListener('click',() => {
     openPopup(popupAdd)
-    clearFormfromErrors(popupAdd,settings)
+    clearFormfromErrors(popupAdd)
 });
 
 formEdit.addEventListener('submit', handleChangeInfo);
@@ -154,10 +122,9 @@ popups.forEach((popup) => {
           closePopup(popup)
         }     
     })
-
 })
 
 initPlaces();
-
+initValidationForm();
 
 

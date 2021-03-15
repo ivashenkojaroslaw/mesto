@@ -48,8 +48,7 @@ class Card{
     _setEventListeners(){
         this._likeButton.addEventListener('click', this._handleLikeCard);
         this._deleteButton.addEventListener('click', this._handleDeleteCard);
-        this._photo.addEventListener('click', () => {
-            //this._handleShowPopupPicture();
+        this._photo.addEventListener('click', () => {            
             this._handleOpenPopup();
         })
 
