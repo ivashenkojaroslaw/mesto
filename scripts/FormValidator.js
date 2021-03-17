@@ -2,6 +2,10 @@ class FormValidator{
     constructor(settings, validationForm){
         this._settings = settings;
         this._validationForm = validationForm;
+        this._inputList = Array.from(this._validationForm.querySelectorAll(this._settings.inputSelector));
+        this._buttonElement = this._validationForm.querySelector(this._settings.submitButtonSelector);
+        this._fieldset = this._validationForm.querySelector(this._settings.fieldSelector);
+         
     }
 
     _showInputError(inputElement, errorMessage){
@@ -44,14 +48,11 @@ class FormValidator{
     }
 
     _setEventListeners(){
-        const inputList = Array.from(this._validationForm.querySelectorAll(this._settings.inputSelector));
-        const buttonElement = this._validationForm.querySelector(this._settings.submitButtonSelector);
-        this._toggleButtonState(inputList,buttonElement);
-        inputList.forEach((inputElement) => {
-            this._inputElement = inputElement;
-            this._inputElement.addEventListener('input', () => {          
-                this._checkInputValidity(this._inputElement);
-                this._toggleButtonState(inputList,buttonElement)
+        this._toggleButtonState(this._inputList,this._buttonElement);
+        this._inputList.forEach((inputElement) => {
+            inputElement.addEventListener('input', () => {          
+                this._checkInputValidity(inputElement);
+                this._toggleButtonState(this._inputList,this._buttonElement)
             });
         }); 
     }
@@ -60,19 +61,15 @@ class FormValidator{
         this._validationForm.addEventListener('submit', function (evt) {
             evt.preventDefault();
         });
-        const fieldsetList = Array.from(this._validationForm.querySelectorAll(this._settings.fieldSelector));
-        fieldsetList.forEach(fieldset => {
-            this._setEventListeners(fieldset);
-        }); 
+        this._setEventListeners(this._fieldset);
+
     }
 
-    clearFormfromErrors(){
-        const formButton = this._validationForm.querySelector(this._settings.submitButtonSelector);
-        const inputList = Array.from(this._validationForm.querySelectorAll(this._settings.inputSelector));
-        inputList.forEach(inputElement => {
+    clearFormfromErrors(){   
+        this._inputList.forEach(inputElement => {
             this._hideInputError(inputElement)
         })
-        this._toggleButtonState(inputList,formButton);
+        this._toggleButtonState(this._inputList,this._buttonElement);
     }
 }
 
