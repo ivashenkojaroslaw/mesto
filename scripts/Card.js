@@ -1,12 +1,9 @@
-const popupPicture = document.querySelector('.popup-image');
-const imagePopupPicture = popupPicture.querySelector('.popup-image__picture');
-const captionPopupPicture =  popupPicture.querySelector('.popup-image__caption');
-
 class Card{
-    constructor(data, cardSelector){
+    constructor(data, cardSelector, handleCardClick){
         this._name = data.name;
         this._link = data.link;
         this._cardSelector = cardSelector;
+        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate(){
@@ -27,31 +24,12 @@ class Card{
         evt.target.closest('.places__card').remove();
     }
 
-    _handleShowPopupPicture(){
-        imagePopupPicture.src = this._link;
-        imagePopupPicture.alt =  this._name;
-        captionPopupPicture.textContent =  this._name;
-        openPopup(popupPicture);
-    }
-
-    _handleOpenPopup(){
-        imagePopupPicture.src = this._link;
-        imagePopupPicture.alt =  this._name;
-        captionPopupPicture.textContent =  this._name;
-        popupPicture.classList.add('popup_show');
-    }
-
-    _handleClosePopup(){
-
-    }
-
     _setEventListeners(){
         this._likeButton.addEventListener('click', this._handleLikeCard);
         this._deleteButton.addEventListener('click', this._handleDeleteCard);
-        this._photo.addEventListener('click', () => {            
-            this._handleOpenPopup();
-        })
-
+        this._photo.addEventListener('click', () => {    
+            this._handleCardClick(this._name, this._link)
+        })        
     }
 
     generateCard(){
