@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="pages/index.css">    
     <title>Место</title>
 </head>
 <body class="root">
     <div class="page">
         <header class="header">
-            <img src="images/logo.svg" alt="Место-логотип" class="header__logo">
+            <img src="<%=require('./images/logo.svg')%>" alt="Место-логотип" class="header__logo">
         </header>
         <main>
             <section class="profile">
-                <img src="images/photoProfile.jpg" alt="Фото профиля" class="profile__photo">
+                <img src="<%=require('./images/photoProfile.jpg')%>" alt="Фото профиля" class="profile__photo">
                 <div class="profile__info">
                     <div class="profile__row">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>                        
@@ -64,7 +63,7 @@
     </section>
     <template id="places__card">
         <div class="places__card">
-            <img class="places__photo" src="images/template.jpg" alt="template"> 
+            <img class="places__photo" src="<%=require('./images/template.jpg')%>" alt="template"> 
             <div class="places__info-pannel">
                 <h2 class="places__name"></h2>
                 <button type='button' class="places__like"></button>
@@ -76,14 +75,10 @@
         <div class="popup-image__window">         
             <button class="popup-image__close-btn"><div class="icon icon_type_close"></div></button>                      
             <figure class="popup-image__picture-container">
-                <img src="images/template.jpg" alt="template" class="popup-image__picture">                    
+                <img src="<%=require('./images/template.jpg')%>" alt="template" class="popup-image__picture">                    
                 <figcaption class="popup-image__caption"></figcaption>
             </figure>  
         </div>
     </section>
-    <script type="module" src="scripts/initial-сards.js"></script>
-    <script type="module" src="pages/index.js"></script>    
-    <script type="module" src="scripts/Card.js"></script>
-    <script type="module" src="scripts/FormValidator.js"></script>
 </body>
 </html>

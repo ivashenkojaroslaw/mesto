@@ -1,26 +1,15 @@
-import Card from '../scripts/Card.js';
-import FormValidator from '../scripts/FormValidator.js';
-import PopupWithImage from '../scripts/PopupWithImage.js';
-import PopupWithForm from '../scripts/PopupWithForm.js';
-import UserInfo from '../scripts/UserInfo.js';
-import Section from '../scripts/Section.js';
-import {initialCards} from '../scripts/initial-сards.js';
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import UserInfo from '../components/UserInfo.js';
+import Section from '../components/Section.js';
+import {initialCards} from '../utils/constants.js';
+import {settings} from '../utils/constants.js';
+import {userInfoInputsSelectors} from '../utils/constants.js';
+import {userInfoSelectors} from '../utils/constants.js';
+import './index.css';
 
-const settings = {  formSelector: '.popup__form',
-                    fieldSelector: '.popup__set',
-                    inputSelector: '.popup__input',
-                    submitButtonSelector: '.popup__button',
-                    inactiveButtonClass: 'popup__button_inactive',
-                    inputErrorClass: 'popup__input_type_error',
-                    errorClass: 'popup__error_active'
-                }
-
-const userInfoInputsSelectors = { nameSelector:'.popup__input_form_name', 
-                                  describeSelector:'.popup__input_form_describe' 
-                                };
-const userInfoSelectors = { nameSelector:'.profile__name', 
-                            describeSelector:'.profile__describe' 
-                          };
 
 const editButton= document.querySelector('.profile__button_type_edit');
 const addButton = document.querySelector('.profile__button_type_add');
@@ -53,7 +42,6 @@ function handleCardClick(name, link){
     const popupImage = new PopupWithImage({name, link},'.popup-image');
     popupImage.open();
 } 
-
 
 popupEdit.setEventListeners();
 popupAdd.setEventListeners();
