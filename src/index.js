@@ -49,7 +49,8 @@ popupAdd.setEventListeners();
 editButton.addEventListener('click',() => {  
     popupEdit.open();
     const currentUserData = userInfo.getUserInfo();
-    popupEdit.fillForm(userInfoInputsSelectors,currentUserData);   
+    popupEdit.popup.querySelector(userInfoInputsSelectors.nameSelector).value = currentUserData.name; 
+    popupEdit.popup.querySelector(userInfoInputsSelectors.describeSelector).value = currentUserData.describe;
     editValidator.clearFormfromErrors();    
 });
 
