@@ -5,6 +5,8 @@
     margin: auto 0;
 }
 
+
+
 @media screen and (max-width: 490px) {
     .profile__photo {
         margin: auto;

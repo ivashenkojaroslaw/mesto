@@ -5,6 +5,7 @@
     margin: 0 10px 0 18px;
     align-self: center;
     flex-shrink: 0;
+    padding: 6px;
 }
 
 .profile__button_type_edit:hover{

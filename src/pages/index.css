@@ -10,6 +10,7 @@
 @import url(../blocks/header/__logo/header__logo.css);
 
 @import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__container/profile__containerPhoto.css);
 @import url(../blocks/profile/__photo/profile__photo.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__name/profile__name.css);
@@ -18,6 +19,7 @@
 @import url(../blocks/profile/__button/profile__button.css);
 @import url(../blocks/profile/__button/_type/profile__button_type_edit.css);
 @import url(../blocks/profile/__button/_type/profile__button_type_add.css);
+@import url(../blocks/profile/__button/_type/profile__button_type_editPhoto.css);
 
 @import url(../blocks/icon/icon.css);
 @import url(../blocks/icon/_type/icon_type_add.css);
@@ -31,6 +33,8 @@
 @import url(../blocks/places/__info-pannel/places__info-pannel.css);
 @import url(../blocks/places/__name/places__name.css);
 @import url(../blocks/places/__like/places__like.css);
+@import url(../blocks/places/__likeContainer/places__likeContainer.css);
+@import url(../blocks/places/__numberLikes/places__numberLikes.css);
 @import url(../blocks/places/__like/_activate/places__like_activate.css);
 @import url(../blocks/places/__trash/places__trash.css);
 
@@ -40,6 +44,9 @@
 
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__window/popup__window.css);
+@import url(../blocks/popup/__window/_size/popup__window_size_big.css);
+@import url(../blocks/popup/__window/_size/popup__window_size_small.css);
+@import url(../blocks/popup/__window/_size/popup__window_size_medium.css);
 @import url(../blocks/popup/__header/popup__header.css);
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__set/popup__set.css);
@@ -52,6 +59,7 @@
 
 @import url(../blocks/popup/__button/popup__button.css);
 @import url(../blocks/popup/__button/_inactive/popup__button_inactive.css);
+@import url(../blocks/popup/__button/_type/popup__button_type_agree.css);
 @import url(../blocks/popup/__input/_form/popup__input_form_card-name.css);
 @import url(../blocks/popup/__input/_form/popup__input_form_card-link.css);
 

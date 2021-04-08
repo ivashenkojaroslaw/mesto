@@ -1,0 +1,13 @@
+.profile__containerPhoto{
+  position: relative;
+  left: 0;
+  top: 0;
+}
+
+.profile__containerPhoto:hover .profile__button_type_editPhoto{
+  opacity: 1;
+}
+
+.profile__containerPhoto:hover .profile__photo{
+  opacity: 0.2;
+}

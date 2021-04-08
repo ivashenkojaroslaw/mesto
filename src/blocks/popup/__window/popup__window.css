@@ -1,6 +1,5 @@
-.popup__window{
-    min-width: 430px;
-    min-height: 330px;
+.popup__window{  
+    min-width: 430px;  
     margin: 0;
     padding: 0;
     background-color: #ffffff;
@@ -9,6 +8,9 @@
     position: relative;
     top: 0;
     left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 @media screen and (max-width: 550px) {

@@ -1,5 +1,5 @@
 .places__like{
-    margin: 0 0 0 4px;
+    margin: 0;
     align-self: center;
     border: 0;
     cursor: pointer;
@@ -18,4 +18,9 @@
 .places__like:active{
     background-image: url(../../../images/activate_like.svg);
     opacity: 1;
+    outline: none;
+}
+
+.places__like:focus{
+    outline: none;
 }
