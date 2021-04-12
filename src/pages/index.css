@@ -37,6 +37,7 @@
 @import url(../blocks/places/__numberLikes/places__numberLikes.css);
 @import url(../blocks/places/__like/_activate/places__like_activate.css);
 @import url(../blocks/places/__trash/places__trash.css);
+@import url(../blocks/places/__trash/places__trash_hide.css);
 
 
 @import url(../blocks/footer/footer.css);
@@ -59,7 +60,6 @@
 
 @import url(../blocks/popup/__button/popup__button.css);
 @import url(../blocks/popup/__button/_inactive/popup__button_inactive.css);
-@import url(../blocks/popup/__button/_type/popup__button_type_agree.css);
 @import url(../blocks/popup/__input/_form/popup__input_form_card-name.css);
 @import url(../blocks/popup/__input/_form/popup__input_form_card-link.css);
 

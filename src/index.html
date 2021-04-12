@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Место</title>
 </head>
+
 <body class="root">
     <div class="page">
         <header class="header">
@@ -13,21 +15,26 @@
         <main>
             <section class="profile">
                 <div class="profile__containerPhoto">
-                    <img src="<%=require('./images/photoProfile.jpg')%>" alt="Фото профиля" class="profile__photo">
-                    <button type="button" class="profile__button profile__button_type_editPhoto"><div class="icon icon_type_edit"></div></button>
-                </div>                
+                    <button type="button" class="profile__button profile__button_type_editPhoto">
+                        <div class="icon icon_type_edit"></div>
+                    </button>
+                </div>
                 <div class="profile__info">
                     <div class="profile__row">
-                        <h1 class="profile__name">Жак-Ив Кусто</h1>                        
-                        <button type="button" class="profile__button profile__button_type_edit"><div class="icon icon_type_edit"></div></button>
+                        <h1 class="profile__name"></h1>
+                        <button type="button" class="profile__button profile__button_type_edit">
+                            <div class="icon icon_type_edit"></div>
+                        </button>
                     </div>
                     <div class="profile__row">
-                        <p class="profile__describe">Исследователь океана</p>
-                    </div>    
+                        <p class="profile__describe"></p>
+                    </div>
                 </div>
-                <button type="button" class="profile__button profile__button_type_add"><div class="icon icon_type_add"></div></button>                
+                <button type="button" class="profile__button profile__button_type_add">
+                    <div class="icon icon_type_add"></div>
+                </button>
             </section>
-            <section class="places">                
+            <section class="places">
             </section>
         </main>
         <footer class="footer">
@@ -35,14 +42,18 @@
         </footer>
     </div>
     <section class="popup popup_edit">
-        <div class="popup__window popup__window_size_big">            
-            <button class="popup__close-btn"><div class="icon icon_type_close"></div></button>                      
+        <div class="popup__window popup__window_size_big">
+            <button class="popup__close-btn">
+                <div class="icon icon_type_close"></div>
+            </button>
             <h2 class="popup__header">Редактировать профиль</h2>
             <form action="submit" class="popup__form popup__form_edit" name="mesto-form-profile" novalidate>
                 <fieldset class="popup__set">
-                    <input id='edit-name' type="text" minlength="2" maxlength="40" class="popup__input popup__input_form_name" name='name' required>
+                    <input id='edit-name' type="text" minlength="2" maxlength="40"
+                        class="popup__input popup__input_form_name" name='name' required>
                     <span class="popup__error edit-name-error"></span>
-                    <input id='edit-describe' type="text" minlength="2" maxlength="200" class="popup__input popup__input_form_describe" name="describe" required>
+                    <input id='edit-describe' type="text" minlength="2" maxlength="200"
+                        class="popup__input popup__input_form_describe" name="describe" required>
                     <span class="popup__error edit-describe-error"></span>
                     <button type="submit" class="popup__button popup__button_type_save">Сохранить</button>
                 </fieldset>
@@ -50,14 +61,18 @@
         </div>
     </section>
     <section class="popup popup_add">
-        <div class="popup__window popup__window_size_big">            
-            <button class="popup__close-btn"><div class="icon icon_type_close"></div></button>                      
+        <div class="popup__window popup__window_size_big">
+            <button class="popup__close-btn">
+                <div class="icon icon_type_close"></div>
+            </button>
             <h2 class="popup__header">Новое место</h2>
             <form action="submit" class="popup__form popup__form_add" name="mesto-form-card" novalidate>
                 <fieldset class="popup__set">
-                    <input type="text" id='add-name' minlength="2" maxlength="30" class="popup__input popup__input_form_card-name" name='name' placeholder="Название" required>
+                    <input type="text" id='add-name' minlength="2" maxlength="30"
+                        class="popup__input popup__input_form_card-name" name='name' placeholder="Название" required>
                     <span class="popup__error add-name-error"></span>
-                    <input type="url" id='add-link' class="popup__input popup__input_form_card-link" name="link" placeholder="Ссылка на картинку" required>
+                    <input type="url" id='add-link' class="popup__input popup__input_form_card-link" name="link"
+                        placeholder="Ссылка на картинку" required>
                     <span class="popup__error add-link-error"></span>
                     <button type="submit" class="popup__button popup__button_type_save">Сохранить</button>
                 </fieldset>
@@ -65,21 +80,26 @@
         </div>
     </section>
     <section class="popup popup__agree">
-        <div class="popup__window popup__window_size_small">            
-            <button class="popup__close-btn"><div class="icon icon_type_close"></div></button>                      
+        <div class="popup__window popup__window_size_small">
+            <button class="popup__close-btn">
+                <div class="icon icon_type_close"></div>
+            </button>
             <h2 class="popup__header">Вы уверены</h2>
-            <form action="submit" class="popup__form" name="mesto-form-agree_to-remove-card" novalidate>                             
-                <button type="submit" class="popup__button popup__button_type_agree">Да</button>               
+            <form action="submit" class="popup__form" name="mesto-form-agree_to-remove-card" novalidate>
+                <button type="submit" class="popup__button">Да</button>
             </form>
         </div>
     </section>
     <section class="popup popup_changePhoto">
-        <div class="popup__window popup__window_size_medium">            
-            <button class="popup__close-btn"><div class="icon icon_type_close"></div></button>                      
+        <div class="popup__window popup__window_size_medium">
+            <button class="popup__close-btn">
+                <div class="icon icon_type_close"></div>
+            </button>
             <h2 class="popup__header">Обновить аватар</h2>
             <form action="submit" class="popup__form" name="mesto-form-change-photo" novalidate>
                 <fieldset class="popup__set">
-                    <input type="link" id='add-linkProfilePhoto' class="popup__input" name='link' placeholder="Ссылка на фото" required>
+                    <input type="url" id='add-linkProfilePhoto' class="popup__input" name='link'
+                        placeholder="Ссылка на фото" required>
                     <span class="popup__error add-linkProfilePhoto-error"></span>
                     <button type="submit" class="popup__button popup__button_type_save">Сохранить</button>
                 </fieldset>
@@ -88,26 +108,28 @@
     </section>
     <template id="places__card">
         <div class="places__card">
-            <img class="places__photo" src="<%=require('./images/template.jpg')%>" alt="template"> 
+            <img class="places__photo" src="<%=require('./images/template.jpg')%>" alt="template">
             <div class="places__info-pannel">
                 <h2 class="places__name"></h2>
                 <div class="places__likeContainer">
                     <button type='button' class="places__like"></button>
-                    <p class="places__numberLikes">33</p>
+                    <p class="places__numberLikes">0</p>
                 </div>
-                
             </div>
             <button type="button" class="places__trash"></button>
         </div>
-    </template>    
+    </template>
     <section class="popup popup-image">
-        <div class="popup-image__window">         
-            <button class="popup-image__close-btn"><div class="icon icon_type_close"></div></button>                      
+        <div class="popup-image__window">
+            <button class="popup-image__close-btn">
+                <div class="icon icon_type_close"></div>
+            </button>
             <figure class="popup-image__picture-container">
-                <img src="<%=require('./images/template.jpg')%>" alt="template" class="popup-image__picture">                    
+                <img src="<%=require('./images/template.jpg')%>" alt="template" class="popup-image__picture">
                 <figcaption class="popup-image__caption"></figcaption>
-            </figure>  
+            </figure>
         </div>
     </section>
 </body>
+
 </html>
