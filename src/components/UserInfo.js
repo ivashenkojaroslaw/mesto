@@ -16,10 +16,11 @@ export default class UserInfo {
         return { name, describe, photo }
     }
 
-    setUserInfo(name, describe, link) {
+    setUserInfo(name, describe, link, id) {
         this._getDOMObject();
         this._nameElement.textContent = name;
         this._describeElement.textContent = describe;
+        this._userId = id;
         this._loadImage(link, this._imageLoadCallback.bind(this))
     }
 
@@ -44,5 +45,9 @@ export default class UserInfo {
     changeImage(newLink) {
         this._image.src = newLink;
     }
+    getUserId(){
+        return this._userId
+    }
+    
 
 }

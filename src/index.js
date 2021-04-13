@@ -2,6 +2,7 @@ import Card from './components/Card.js';
 import FormValidator from './components/FormValidator.js';
 import PopupWithImage from './components/PopupWithImage.js';
 import PopupWithForm from './components/PopupWithForm.js';
+import PopupConfirm from './components/PopupConfirm.js';
 import UserInfo from './components/UserInfo.js';
 import Section from './components/Section.js';
 import Api from './components/Api';
@@ -18,12 +19,6 @@ const api = new Api({
     }
 })
 
-const section = new Section({
-    items: '',
-    renderer: () => { }
-}, '.places');
-
-
 const editButton = document.querySelector('.profile__button_type_edit');
 const addButton = document.querySelector('.profile__button_type_add');
 const editAvatarButton = document.querySelector('.profile__button_type_editPhoto');
@@ -39,51 +34,32 @@ const popupEdit = new PopupWithForm({
         renderLoading(true, popupEdit)
         api.setUserData({
             handlerSuccess: (data) => {
-                userInfo.setUserInfo(data.name, data.about, data.avatar);
+                userInfo.setUserInfo(data.name, data.about, data.avatar, data._id);
             },
             handlerFinally: () => {
-                renderLoading(false, popupEdit); 
+                renderLoading(false, popupEdit);
             }
         }, data.name, data.describe);
-        
+
     }
 }, '.popup_edit');
+
+const popupAgree = new PopupConfirm('.popup_agree');
 
 const popupAdd = new PopupWithForm({
     handleFormSubmit: (data) => {
         renderLoading(true, popupAdd)
         api.setCard({
             handlerFinally: () => {
-                renderLoading(false, popupAdd); 
+                renderLoading(false, popupAdd);
             },
             handlerSuccess: (data) => {
-                const cardElement = new Card(data, '#places__card', handleCardClick, true,
-                    {
-                        handleLikedCard: () => {
-                            api.likedCard({
-                                handlerSuccess: (data) => {
-                                    cardElement.setLike(data.likes.length);
-                                }
-                            }, cardElement.id)
-                        },
-                        handleDislikedCard: () => {
-                            api.disikedCard({
-                                handlerSuccess: (data) => {
-                                    cardElement.setLike(data.likes.length);
-                                }
-                            }, cardElement.id)
-                        },
-                        handleRemoveClick: () => {
-                            const popupAgree = new PopupWithForm({
-                                handleFormSubmit: () => {
-                                    api.removeCard(data._id)
-                                    cardElement.remove();
-                                }
-                            }, '.popup__agree');
-                            popupAgree.open()
-                            popupAgree.setEventListeners()
-                        }
-                    });                
+                const cardElement = new Card(data, '#places__card', handleCardClick, getInitialUser(),
+                    {                        
+                        handleLikedCard,
+                        handleDislikedCard,
+                        handleRemoveClick                    
+                    });
                 section.addItem(cardElement.generateCard());
             }
         }, data.name, data.link)
@@ -95,56 +71,82 @@ const popupEditAvatar = new PopupWithForm({
         renderLoading(true, popupEditAvatar)
         api.updateAvatar({
             handlerSuccess: (answer) => {
-                userInfo.changeImage(answer.avatar);                
+                userInfo.changeImage(answer.avatar);
             },
             handlerFinally: () => {
-                renderLoading(false, popupEditAvatar); 
+                renderLoading(false, popupEditAvatar);
             },
         }, data.link)
 
     }
 }, '.popup_changePhoto')
 
+const section = new Section({
+    items: '',
+    renderer: () => { }
+}, '.places');
 
-api.getInitialCards({
-    handlerSuccess: (data) => {
-        const section = new Section({
-            items: data,
-            renderer: (item) => {
-                const cardElement = new Card(item, '#places__card', handleCardClick, false,
-                    {
-                        handleLikedCard: () => {
-                            api.likedCard({
-                                handlerSuccess: (data) => {
-                                    cardElement.setLike(data.likes.length);
-                                }
-                            }, cardElement.id)
-                        },
-                        handleDislikedCard: () => {
-                            api.disikedCard({
-                                handlerSuccess: (data) => {
-                                    cardElement.setLike(data.likes.length);
-                                }
-                            }, cardElement.id)
-                        }
-                    });
-                section.addItem(cardElement.generateCard());
-            }
-        }, '.places');
-        section.renderer();
-    }
-})
 
 api.getUserInfo({
     handlerSuccess: (data) => {
-        userInfo.setUserInfo(data.name, data.about, data.avatar)
+        userInfo.setUserInfo(data.name, data.about, data.avatar, data._id)
+
     }
 })
+
+api.getInitialCards({
+    handlerSuccess: (data) => {
+        data.forEach((item) => {
+            const cardElement = new Card(item, '#places__card', handleCardClick, getInitialUser(),
+                {
+                    handleLikedCard,
+                    handleDislikedCard,
+                    handleRemoveClick                     
+                }
+            )
+            section.addItem(cardElement.generateCard());
+        })
+
+    }
+})
+
 
 function handleCardClick(name, link) {
     const popupImage = new PopupWithImage({ name, link }, '.popup-image');
     popupImage.open();
 }
+
+function handleRemoveClick(cardElement){
+    popupAgree.open();
+    popupAgree.setEventListeners();
+    popupAgree.setEventOnSubmit({
+        handlerFormSubmit: () => {                                
+            api.removeCard(cardElement.id)
+            cardElement.remove();
+        }
+    })
+}
+
+function handleDislikedCard(cardElement){
+    api.disikedCard({
+        handlerSuccess: (data) => {
+            cardElement.setLike(data.likes.length);
+        }
+    }, cardElement.id)
+}
+function handleLikedCard(cardElement){
+    api.likedCard({
+        handlerSuccess: (data) => {
+            cardElement.setLike(data.likes.length);
+        }
+    }, cardElement.id)
+}
+
+function getInitialUser(){
+    return userInfo.getUserId()
+}
+
+
 
 function renderLoading(isLoading, popup) {
     if (isLoading) {
