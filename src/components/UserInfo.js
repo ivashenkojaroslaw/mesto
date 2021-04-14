@@ -4,7 +4,6 @@ export default class UserInfo {
         this._describeSelector = describeSelector;
         this._photoSelector = photoSelector;
         this._photoContainerSelector = photoContainerSelector;
-        this._image = document.createElement('img');
     }
 
     getUserInfo() {
@@ -21,7 +20,7 @@ export default class UserInfo {
         this._nameElement.textContent = name;
         this._describeElement.textContent = describe;
         this._userId = id;
-        this._loadImage(link, this._imageLoadCallback.bind(this))
+        this._photoElement.src = link;
     }
 
     _getDOMObject() {
@@ -29,25 +28,12 @@ export default class UserInfo {
         this._describeElement = document.querySelector(this._describeSelector);
         this._photoElement = document.querySelector(this._photoSelector);
         this._containerElement = document.querySelector(this._photoContainerSelector);
-    }
+    }  
 
-    _imageLoadCallback(evt) {
-        this._containerElement.prepend(evt.target);
-    }
-
-    _loadImage(imageUrl, loadCallback) {
-        this._image.src = imageUrl;
-        this._image.alt = 'Фото профиля';
-        this._image.classList.add('profile__photo');
-        this._image.onload = loadCallback;
-    }
-
-    changeImage(newLink) {
-        this._image.src = newLink;
+    setImage(newLink) {
+        this._photoElement.src = newLink;
     }
     getUserId(){
         return this._userId
     }
-    
-
 }

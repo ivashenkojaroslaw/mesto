@@ -33,6 +33,9 @@ export default class Popup {
         }
     }
     setTextInButton(value) {
-        this._popupButton.textContent = value;
+        if (this._popupButton){
+            this._popupButton.textContent = value;
+        }
+        
     }
 }

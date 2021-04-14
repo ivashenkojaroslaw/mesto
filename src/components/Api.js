@@ -4,46 +4,49 @@ export default class Api {
     this._headers = options.headers;
   }
 
+  _checkResponse(res) {
+    if (res.ok) {
+        return res.json();
+    }
+    return Promise.reject(`Ошибка ${res.status}`);
+  }
+  _handleError(err){
+    console.log(`Что-то пошло не так`, err);
+  }
+
   getInitialCards(handlers) {
-    const _handlerSuccess = handlers.handlerSuccess;
+    //const _handlerSuccess = handlers.handlerSuccess;
     return fetch(`${this._baseURL}/cards`, {
       method: 'GET',
       headers: this._headers
     })
-      .then(res => {
-        if (res.ok) return res.json()
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+    .then(this._checkResponse)
       .then(data => {
-        _handlerSuccess(data);
+       // _handlerSuccess(data);
+       return data
       })
-      .catch((err) => {
-        console.log(`Что-то пошло не так`, err);
-      })
+      .catch(this._handleError)
   }
 
   getUserInfo(handlers) {
-    const _handlerSuccess = handlers.handlerSuccess;
+    //const _handlerSuccess = handlers.handlerSuccess;
     return fetch(`${this._baseURL}/users/me`, {
       method: 'GET',
       headers: this._headers
     })
-      .then(res => {
-        if (res.ok) return res.json()
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+    .then(this._checkResponse)
       .then(data => {
-        _handlerSuccess(data);
+        //_handlerSuccess(data);
+        return data
       })
-      .catch((err) => {
-        console.log(`Что-то пошло не так`, err);
-      })
+      .catch(this._handleError)
 
   }
 
   setUserData(handlers, name, about) {
     const _handlerSuccess = handlers.handlerSuccess;
     const _handlerFinally = handlers.handlerFinally;
+
     return fetch(`${this._baseURL}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
@@ -52,16 +55,11 @@ export default class Api {
         about: about
       })
     })
-      .then(res => {
-        if (res.ok) return res.json()
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._checkResponse)
       .then(data => {
         _handlerSuccess(data);
       })
-      .catch((err) => {
-        console.log(`Что-то пошло не так`, err);
-      })
+      .catch(this._handleError)
       .finally(() => {
         _handlerFinally()
       })
@@ -74,13 +72,8 @@ export default class Api {
         authorization: 'de762cbe-88d6-41ba-9954-cf6c210b4eb0'
       }
     })
-      .then(res => {
-        if (res.ok) return res.json()
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
-      .catch(err => {
-        console.log(`Что-то пошло не так`, err);
-      })
+      .then(this._checkResponse)
+      .catch(this._handleError)
   }
 
   setCard(handlers, name, link) {
@@ -97,16 +90,11 @@ export default class Api {
         link: link
       })
     })
-      .then(res => {
-        if (res.ok) return res.json()
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._checkResponse)
       .then(data => {
         _handlerSuccess(data)
       })
-      .catch(err => {
-        console.log(`Что-то пошло не так`, err);
-      })
+      .catch(this._handleError)
       .finally(() => {
         _handlerFinally();
       })
@@ -118,16 +106,11 @@ export default class Api {
       method: 'PUT',
       headers: this._headers
     })
-      .then(res => {
-        if (res.ok) return res.json()
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._checkResponse)
       .then(data => {
         _handlerSuccess(data);
       })
-      .catch((err) => {
-        console.log(`Что-то пошло не так`, err);
-      })
+      .catch(this._handleError)
   }
 
   disikedCard(handlers, cardId) {
@@ -136,16 +119,11 @@ export default class Api {
       method: 'DELETE',
       headers: this._headers
     })
-      .then(res => {
-        if (res.ok) return res.json()
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._checkResponse)
       .then(data => {
         _handlerSuccess(data);
       })
-      .catch((err) => {
-        console.log(`Что-то пошло не так`, err);
-      })
+      .catch(this._handleError)
   }
 
   updateAvatar(handlers, link) {
@@ -161,10 +139,7 @@ export default class Api {
         avatar: link
       })
     })
-      .then(res => {
-        if (res.ok) return res.json()
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._checkResponse)
       .then(data => {
         _handlerSuccess(data)
       })
@@ -176,6 +151,14 @@ export default class Api {
       })
   }
 
-
+  getAllInitialInfo(hedlers){   
+    const _handlerSuccess = hedlers.handlerSuccess
+    console.log(12321)
+    return Promise.all([this.getUserInfo(), this.getInitialCards()])      
+      .then(values => {
+        _handlerSuccess(values[0],values[1])             
+      })
+      .catch(this._handleError);
+  }
 }
 

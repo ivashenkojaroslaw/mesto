@@ -19,6 +19,8 @@ const api = new Api({
     }
 })
 
+
+
 const editButton = document.querySelector('.profile__button_type_edit');
 const addButton = document.querySelector('.profile__button_type_add');
 const editAvatarButton = document.querySelector('.profile__button_type_editPhoto');
@@ -54,12 +56,7 @@ const popupAdd = new PopupWithForm({
                 renderLoading(false, popupAdd);
             },
             handlerSuccess: (data) => {
-                const cardElement = new Card(data, '#places__card', handleCardClick, getInitialUser(),
-                    {                        
-                        handleLikedCard,
-                        handleDislikedCard,
-                        handleRemoveClick                    
-                    });
+                const cardElement = renderCard(data);
                 section.addItem(cardElement.generateCard());
             }
         }, data.name, data.link)
@@ -71,7 +68,7 @@ const popupEditAvatar = new PopupWithForm({
         renderLoading(true, popupEditAvatar)
         api.updateAvatar({
             handlerSuccess: (answer) => {
-                userInfo.changeImage(answer.avatar);
+                userInfo.setImage(answer.avatar);
             },
             handlerFinally: () => {
                 renderLoading(false, popupEditAvatar);
@@ -81,44 +78,27 @@ const popupEditAvatar = new PopupWithForm({
     }
 }, '.popup_changePhoto')
 
+const popupImage = new PopupWithImage('.popup-image');
+
 const section = new Section({
-    items: '',
-    renderer: () => { }
+    items: [],
+    renderer: (item) => {
+        const cardElement = renderCard(item);
+        section.addItem(cardElement.generateCard());
+    }
 }, '.places');
 
 
-api.getUserInfo({
-    handlerSuccess: (data) => {
-        userInfo.setUserInfo(data.name, data.about, data.avatar, data._id)
-
-    }
-})
-
-api.getInitialCards({
-    handlerSuccess: (data) => {
-        data.forEach((item) => {
-            const cardElement = new Card(item, '#places__card', handleCardClick, getInitialUser(),
-                {
-                    handleLikedCard,
-                    handleDislikedCard,
-                    handleRemoveClick                     
-                }
-            )
-            section.addItem(cardElement.generateCard());
-        })
-
-    }
-})
 
 
-function handleCardClick(name, link) {
-    const popupImage = new PopupWithImage({ name, link }, '.popup-image');
-    popupImage.open();
+
+
+function handleCardClick(name, link) {    
+    popupImage.open(name,link);
 }
 
 function handleRemoveClick(cardElement){
-    popupAgree.open();
-    popupAgree.setEventListeners();
+    popupAgree.open();    
     popupAgree.setEventOnSubmit({
         handlerFormSubmit: () => {                                
             api.removeCard(cardElement.id)
@@ -146,7 +126,16 @@ function getInitialUser(){
     return userInfo.getUserId()
 }
 
-
+function renderCard(dataItem){
+    const cardElement = new Card(dataItem, '#places__card', handleCardClick, getInitialUser(),
+    {
+        handleLikedCard,
+        handleDislikedCard,
+        handleRemoveClick                     
+    }
+    )
+    return cardElement
+}
 
 function renderLoading(isLoading, popup) {
     if (isLoading) {
@@ -160,6 +149,8 @@ function renderLoading(isLoading, popup) {
 popupEdit.setEventListeners()
 popupAdd.setEventListeners();;
 popupEditAvatar.setEventListeners();
+popupImage.setEventListeners();
+popupAgree.setEventListeners();
 
 editButton.addEventListener('click', () => {
     popupEdit.open();
@@ -178,6 +169,12 @@ editAvatarButton.addEventListener('click', () => {
     popupEditAvatar.open();
     editAvatarValidator.clearFormfromErrors();
 })
+
+api.getAllInitialInfo({handlerSuccess: (userData,cardsData)=>{    
+    userInfo.setUserInfo(userData.name, userData.about, userData.avatar, userData._id)
+    section.setItems(cardsData);
+    section.renderer();
+}});
 
 editValidator.enableValidation();
 addValidator.enableValidation();

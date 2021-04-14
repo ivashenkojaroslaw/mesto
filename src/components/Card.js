@@ -87,13 +87,13 @@ class Card {
     }
 
     _isMyCard(){ 
-        if(this._idUser == this._ownerId) return true
+        if(this._idUser === this._ownerId) return true
         return false
     }
     _isILiked(){
         let checker = false;
         this._likes.forEach(user => {                       
-            if (user._id == this._idUser) checker = true
+            if (user._id === this._idUser) checker = true
         })        
         return checker
     }
