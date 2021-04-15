@@ -68,9 +68,7 @@ export default class Api {
   removeCard(cardId) {
     return fetch(`${this._baseURL}/cards/${cardId}`, {
       method: 'DELETE',
-      headers: {
-        authorization: 'de762cbe-88d6-41ba-9954-cf6c210b4eb0'
-      }
+      headers: this._headers,
     })
       .then(this._checkResponse)
       .catch(this._handleError)
@@ -81,10 +79,7 @@ export default class Api {
     const _handlerFinally = handlers.handlerFinally;
     fetch(`${this._baseURL}/cards`, {
       method: 'POST',
-      headers: {
-        authorization: 'de762cbe-88d6-41ba-9954-cf6c210b4eb0',
-        'Content-Type': 'application/json'
-      },
+      headers: this._headers,
       body: JSON.stringify({
         name: name,
         link: link
@@ -131,10 +126,7 @@ export default class Api {
     const _handlerFinally = handlers.handlerFinally;
     fetch(`${this._baseURL}/users/me/avatar`, {
       method: 'PATCH',
-      headers: {
-        authorization: 'de762cbe-88d6-41ba-9954-cf6c210b4eb0',
-        'Content-Type': 'application/json'
-      },
+      headers: this._headers,
       body: JSON.stringify({
         avatar: link
       })
@@ -153,7 +145,6 @@ export default class Api {
 
   getAllInitialInfo(hedlers){   
     const _handlerSuccess = hedlers.handlerSuccess
-    console.log(12321)
     return Promise.all([this.getUserInfo(), this.getInitialCards()])      
       .then(values => {
         _handlerSuccess(values[0],values[1])             
