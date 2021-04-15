@@ -1,15 +1,15 @@
-import Card from './components/Card.js';
-import FormValidator from './components/FormValidator.js';
-import PopupWithImage from './components/PopupWithImage.js';
-import PopupWithForm from './components/PopupWithForm.js';
-import PopupConfirm from './components/PopupConfirm.js';
-import UserInfo from './components/UserInfo.js';
-import Section from './components/Section.js';
-import Api from './components/Api';
-import { settings } from './utils/constants.js';
-import { userInfoInputsSelectors } from './utils/constants.js';
-import { userInfoSelectors } from './utils/constants.js';
-import './pages/index.css';
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import PopupConfirm from '../components/PopupConfirm.js';
+import UserInfo from '../components/UserInfo.js';
+import Section from '../components/Section.js';
+import Api from '../components/Api';
+import { settings } from '../utils/constants.js';
+import { userInfoInputsSelectors } from '../utils/constants.js';
+import { userInfoSelectors } from '../utils/constants.js';
+import './index.css';
 
 const api = new Api({
     baseURL: 'https://mesto.nomoreparties.co/v1/cohort-22',
